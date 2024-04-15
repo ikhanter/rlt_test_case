@@ -16,7 +16,7 @@ json_schema = {
         },
         "group_type" : {
             "type" : "string",
-            "enum" : ["hour", "day", "month"],
+            "enum" : ["hour", "day", "week", "month"],
         },
     },
     "required" : ["dt_from", "dt_upto", "group_type"],
