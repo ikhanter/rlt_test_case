@@ -42,6 +42,8 @@ async def process_json(json_data: dict, realization: Literal[1, 2]) -> dict:  # 
                 interval = intervals["hour"]
             case "day":
                 interval = intervals["day"]
+            case "week":
+                interval = intervals["week"]
             case "month":
                 interval = intervals["month"]
 
