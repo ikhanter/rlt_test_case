@@ -1,6 +1,7 @@
 """Make client for DB and process data."""
 import bson
 import copy
+import json
 from datetime import datetime
 from typing import Literal
 
@@ -83,7 +84,7 @@ async def process_json(json_data: dict, realization: Literal[1, 2]) -> dict:  # 
             result["labels"].append(current_date.isoformat())
             current_date = temp_end_date
 
-        return result
+        return json.dumps(result)
 
     async def realization_2() -> dict:
         """Process data with rounded value of last minute.
@@ -123,7 +124,7 @@ async def process_json(json_data: dict, realization: Literal[1, 2]) -> dict:  # 
             result["labels"].append(start_date.isoformat())
             start_date += interval
 
-        return result
+        return json.dumps(result)
 
     match realization:
         case 1:
