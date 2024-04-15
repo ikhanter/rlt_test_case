@@ -8,7 +8,7 @@ from typing import Literal
 import motor.motor_asyncio as motor
 from dateutil.relativedelta import relativedelta
 
-from .config import DB_HOST, DB_PASSWORD, DB_PORT, DB_USERNAME, DB_NAME
+from .config import DB_HOST, DB_PASSWORD, DB_PORT, DB_USERNAME, DB_NAME, BSON_PATH
 
 client = motor.AsyncIOMotorClient(
     f"{DB_HOST}:{DB_PORT}",
@@ -26,11 +26,11 @@ intervals = {
     }
 
 async def start_db() -> None:
-    """Make a collection and fill the data."""
+    """Make a collection and fill the data taken from BSON file."""
     if "payments" not in await db.list_collection_names():
         async with await client.start_session() as session:
             payments_collection = db["payments"]
-            with open("sampleDB/sample_collection.bson", "rb") as f:  # noqa: ASYNC101, PTH123
+            with open(BSON_PATH, "rb") as f:  # noqa: ASYNC101, PTH123
                 bson_data = f.read()
                 data = bson.decode_all(bson_data)
             await payments_collection.insert_many(data, session=session)
