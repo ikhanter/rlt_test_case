@@ -24,7 +24,7 @@ async def process_query(message: types.Message):
                 \'group_type\': [\'hour\', \'day\', \'month\']'''
             )
         else:
-            data = await process_json(result)
+            data = await process_json(result, 2)
             await message.answer(str(data))
 
 async def on_startup():
