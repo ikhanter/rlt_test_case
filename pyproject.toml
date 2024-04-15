@@ -8,7 +8,10 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 aiogram = "^3.4.1"
-pymongo = "^4.6.3"
+python-dotenv = "^1.0.1"
+motor = "^3.4.0"
+jsonschema = "^4.21.1"
+python-dateutil = "^2.9.0.post0"
 
 
 [build-system]
