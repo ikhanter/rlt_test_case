@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
-BOT_NAME = os.getenv("BOT_NAME")
 
 DB_HOST = os.getenv("DB_HOST")
 DB_USERNAME = os.getenv("DB_USERNAME")
